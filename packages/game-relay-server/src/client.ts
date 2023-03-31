@@ -24,14 +24,14 @@ export class RelayClient {
     return lobby;
   }
 
-  async getClients<T>(joinCode: string) {
+  async getClients<T = any>(joinCode: string) {
     const clientsUrl = new URL(`./lobby/${joinCode}/clients`, this.url).href;
     const res = await axios.get<Client<T>[]>(clientsUrl);
     const clients = res.data;
     return clients;
   }
 
-  async getClient<T>(joincode: string, clientId: number) {
+  async getClient<T = any>(joincode: string, clientId: number) {
     const clientsurl = new URL(
       `./lobby/${joincode}/clients/${clientId}`,
       this.url
