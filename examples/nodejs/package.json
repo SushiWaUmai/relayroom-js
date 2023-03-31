@@ -4,6 +4,10 @@
   "main": "dist/index.js",
   "license": "MIT",
   "private": true,
+	"scripts": {
+		"start": "node .",
+		"build": "tsc -b"
+	},
   "dependencies": {
     "game-relay-server": "*"
   },

@@ -8,6 +8,10 @@
   },
   "devDependencies": {
     "@game-relay-server/tsconfig": "*",
+    "@types/ws": "^8.5.4",
     "typescript": "^5.0.3"
+  },
+  "dependencies": {
+    "ws": "^8.13.0"
   }
 }
