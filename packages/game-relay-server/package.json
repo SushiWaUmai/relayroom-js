@@ -1,6 +1,13 @@
 {
   "name": "game-relay-server",
-  "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT"
+  "version": "0.0.0",
+  "main": "dist/index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc -b"
+  },
+  "devDependencies": {
+    "@game-relay-server/tsconfig": "*",
+    "typescript": "^5.0.3"
+  }
 }

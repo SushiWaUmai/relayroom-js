@@ -2,5 +2,15 @@
   "name": "game-relay-server",
   "version": "0.0.0",
   "private": true,
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "build": "turbo build"
+  },
+  "workspaces": [
+    "examples/**",
+    "packages/**"
+  ],
+  "devDependencies": {
+    "turbo": "^1.8.8"
+  }
 }

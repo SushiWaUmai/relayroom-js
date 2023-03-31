@@ -1,6 +1,14 @@
 {
-  "name": "nodejs",
-  "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT"
+  "name": "@game-relay-server/nodejs",
+  "version": "0.0.0",
+  "main": "dist/index.js",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "game-relay-server": "*"
+  },
+  "devDependencies": {
+    "@game-relay-server/tsconfig": "*",
+    "typescript": "^5.0.3"
+  }
 }
