@@ -17,6 +17,13 @@ export class RelayClient {
     return lobbies;
   }
 
+  async createLobby() {
+    const lobbiesUrl = new URL("lobby", this.url).href;
+    const res = await axios.post<Lobby>(lobbiesUrl);
+    const lobby = res.data;
+    return lobby;
+  }
+
   async getClients<T>(joinCode: string) {
     const clientsUrl = new URL(`./lobby/${joinCode}/clients`, this.url).href;
     const res = await axios.get<Client<T>[]>(clientsUrl);
@@ -24,8 +31,11 @@ export class RelayClient {
     return clients;
   }
 
-	async getClient<T>(joincode: string, clientId: number) {
-    const clientsurl = new URL(`./lobby/${joincode}/clients/${clientId}`, this.url).href;
+  async getClient<T>(joincode: string, clientId: number) {
+    const clientsurl = new URL(
+      `./lobby/${joincode}/clients/${clientId}`,
+      this.url
+    ).href;
     const res = await axios.get<Client<T>>(clientsurl);
     const client = res.data;
     return client;
