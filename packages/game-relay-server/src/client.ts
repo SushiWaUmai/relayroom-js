@@ -1,12 +1,14 @@
 import WebSocket from "ws";
 import axios from "axios";
-import type { Client, Lobby } from "./types";
+import type { Client, Lobby, Message } from "./types";
+import EventEmitter from "events";
 
-export class RelayClient {
+export class RelayClient extends EventEmitter {
   url: string;
   connection: WebSocket;
 
   constructor(url: string) {
+    super();
     this.url = url;
   }
 
@@ -41,11 +43,35 @@ export class RelayClient {
     return client;
   }
 
-  joinLobby(joinCode: string) {
-    const joinUrl = new URL(
-      `./lobby/${joinCode}`,
-      this.url.replace("http://", "ws://").replace("https://", "wss://")
-    ).href;
-    this.connection = new WebSocket(joinUrl);
+  joinLobby(joinCode: string): Promise<void> {
+    return new Promise((resolve) => {
+      const joinUrl = new URL(
+        `./lobby/${joinCode}`,
+        this.url.replace("http://", "ws://").replace("https://", "wss://")
+      ).href;
+      this.connection = new WebSocket(joinUrl);
+
+      this.connection.on("close", () => {
+        this.removeAllListeners();
+      });
+
+      this.connection.on("open", () => {
+        this.connection.on("message", (msgData) => {
+          const msg = JSON.parse(msgData.toString()) as Message;
+          this.emit(msg.type, msg.data);
+        });
+
+				resolve();
+      });
+    });
+  }
+
+  send<T = any>(msg: Message<T>) {
+    if (this.connection.readyState != WebSocket.OPEN) {
+      console.error("Failed to send msg. Connection has not been established. Make sure to await the joinLobby call");
+      return;
+    }
+
+    this.connection.send(JSON.stringify(msg));
   }
 }
