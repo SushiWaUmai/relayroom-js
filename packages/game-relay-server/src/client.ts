@@ -1,6 +1,6 @@
 import WebSocket from "ws";
 import axios from "axios";
-import type { Lobby } from "./types";
+import type { Client, Lobby } from "./types";
 
 export class RelayClient {
   url: string;
@@ -15,6 +15,20 @@ export class RelayClient {
     const res = await axios.get<Lobby[]>(lobbiesUrl);
     const lobbies = res.data;
     return lobbies;
+  }
+
+  async getClients<T>(joinCode: string) {
+    const clientsUrl = new URL(`./lobby/${joinCode}/clients`, this.url).href;
+    const res = await axios.get<Client<T>[]>(clientsUrl);
+    const clients = res.data;
+    return clients;
+  }
+
+	async getClient<T>(joincode: string, clientId: number) {
+    const clientsurl = new URL(`./lobby/${joincode}/clients/${clientId}`, this.url).href;
+    const res = await axios.get<Client<T>>(clientsurl);
+    const client = res.data;
+    return client;
   }
 
   joinLobby(joinCode: string) {
