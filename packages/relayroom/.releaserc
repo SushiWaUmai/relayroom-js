@@ -1,0 +1,9 @@
+{
+  "branches": [
+    "main"
+  ],
+  "plugins": [
+    "@semantic-release/npm",
+  ],
+  "repositoryUrl": "https://github.com/SushiWaUmai/relayroom-js.git"
+}

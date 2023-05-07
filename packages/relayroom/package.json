@@ -4,11 +4,13 @@
 	"main": "dist/index.js",
 	"license": "MIT",
 	"scripts": {
-		"build": "tsc -b"
+		"build": "tsc -b",
+		"release": "semantic-release"
 	},
 	"devDependencies": {
 		"@relayroom/tsconfig": "*",
 		"@types/ws": "^8.5.4",
+		"semantic-release": "^21.0.2",
 		"typescript": "^5.0.3"
 	},
 	"dependencies": {

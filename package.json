@@ -1,16 +1,17 @@
 {
-  "name": "relayroom-js",
-  "version": "0.0.0",
-  "private": true,
-  "license": "MIT",
-  "scripts": {
-    "build": "turbo build"
-  },
-  "workspaces": [
-    "examples/**",
-    "packages/**"
-  ],
-  "devDependencies": {
-    "turbo": "^1.8.8"
-  }
+	"name": "relayroom-js",
+	"version": "0.0.0",
+	"private": true,
+	"license": "MIT",
+	"scripts": {
+		"build": "turbo build",
+		"release": "yarn workspace relayroom release"
+	},
+	"workspaces": [
+		"examples/**",
+		"packages/**"
+	],
+	"devDependencies": {
+		"turbo": "^1.8.8"
+	}
 }
