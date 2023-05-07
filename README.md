@@ -1,3 +1,3 @@
-# Game Relay Server js
+# Relayroom js
 
-SDK for the game relay server
+SDK for Relayroom

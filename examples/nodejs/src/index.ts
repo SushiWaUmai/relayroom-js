@@ -1,4 +1,4 @@
-import { RelayClient } from "game-relay-server";
+import { RelayClient } from "relayroom";
 
 const main = async () => {
   const client = new RelayClient("http://localhost:8080");
