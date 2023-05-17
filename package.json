@@ -5,7 +5,7 @@
 	"license": "MIT",
 	"scripts": {
 		"build": "turbo build",
-		"release": "yarn workspace relayroom release"
+		"release": "turbo release"
 	},
 	"workspaces": [
 		"examples/**",
